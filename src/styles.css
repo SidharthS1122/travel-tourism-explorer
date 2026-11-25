@@ -430,3 +430,65 @@ img { display: block; max-width: 100%; }
 :root[data-theme="dark"] .home-page .trip-category { color: #2a342b; }
 :root[data-theme="dark"] .home-page .about-section { background: #202a23; }
 :root[data-theme="dark"] .reference-collection .empty-state { border-color: var(--line); background: var(--surface); }
+
+/* Give narrow screens more room between controls and trip information. */
+@media (max-width: 640px) {
+  .home-page .nav-inner { gap: 10px; }
+  .home-page .brand { min-width: 0; gap: 8px; }
+  .home-page .brand-name { letter-spacing: 1.5px; }
+  .home-page .nav-actions { flex: 0 0 auto; gap: 8px; }
+
+  .landing-hero { min-height: 690px; padding: 128px 20px 105px; }
+  .hero-copy { max-width: 100%; }
+  .hero-copy h1 { max-width: 100%; font-size: clamp(43px, 12.5vw, 66px); line-height: .94; letter-spacing: -2px; }
+  .hero-description { max-width: 310px; line-height: 1.55; }
+  .hero-actions { flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .hero-mantra { top: auto; right: 20px; bottom: 116px; font-size: 22px; }
+  .hero-photo-caption { bottom: 93px; }
+
+  .hero-search-slot { right: 14px; left: 14px; }
+  .hero-search-bar { gap: 10px; padding: 14px; }
+  .hero-search-input { min-width: 0; }
+  .hero-search-select { min-width: 0; }
+  .hero-search-select select { min-width: 0; width: 100%; }
+
+  .home-page .collection-section { padding: 122px 16px 54px; }
+  .featured-intro { margin-bottom: 8px; }
+  .featured-intro h2 { max-width: 100%; font-size: clamp(36px, 10vw, 43px); line-height: 1.04; }
+  .featured-intro > p:not(.featured-eyebrow) { max-width: 300px; line-height: 1.55; }
+  .featured-cards, .more-cards { gap: 20px; }
+  .home-page .trip-card { width: 100%; }
+  .home-page .trip-image-wrap { height: clamp(205px, 64vw, 270px); }
+  .trip-title-row h3 { font-size: 19px; line-height: 1.2; }
+  .trip-location { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .home-page .trip-footer {
+    min-height: auto;
+    padding: 13px 14px 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 12px;
+  }
+  .trip-duration { white-space: nowrap; }
+  .trip-price { min-width: 0; padding-left: 12px; }
+  .trip-price strong { font-size: 14px; }
+  .home-page .details-link { width: 100%; height: 41px; grid-column: 1 / -1; }
+  .more-destinations { margin-top: 48px; }
+  .more-destinations-heading { margin-bottom: 20px; gap: 8px; }
+  .more-destinations-heading h2 { max-width: 100%; font-size: clamp(32px, 9vw, 39px); line-height: 1.08; }
+  .home-page .about-section { padding: 42px 20px; }
+}
+
+@media (max-width: 380px) {
+  .home-page .nav-inner { padding-inline: 12px; }
+  .home-page .brand-name { font-size: 12px; letter-spacing: 1px; }
+  .home-page .brand-name span { font-size: 6px; }
+  .theme-toggle { width: 50px; }
+  .theme-toggle.is-dark .toggle-thumb { transform: translateX(18px); }
+  .hero-search-bar { grid-template-columns: minmax(0, 1fr); }
+  .hero-search-input, .hero-search-submit { grid-column: 1; }
+  .hero-search-select { min-height: 38px; padding: 0 8px; border-bottom: 1px solid #e4dac7; }
+  .hero-search-select:last-of-type { border-bottom: 0; }
+  .home-page .collection-section { padding-inline: 14px; }
+  .trip-price { padding-left: 9px; }
+  .trip-price strong { font-size: 13px; }
+}
