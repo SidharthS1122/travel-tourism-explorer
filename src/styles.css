@@ -174,7 +174,7 @@ img { display: block; max-width: 100%; }
 /* Aaroha landing page, inspired by the supplied travel homepage reference. */
 :root[data-theme="dark"] {
   --ink: #eee8d8;
-  --sage: #81957a;
+  --sage: #526650;
   --sage-light: #354239;
   --walnut: #ddb77b;
   --muted: #c0c3b7;
@@ -203,12 +203,15 @@ img { display: block; max-width: 100%; }
 .home-page .saved-link { padding: 12px 22px; border-color: #c18027; color: #20291f; background: rgba(255,226,176,.72); font: 600 12px Georgia,serif; }
 .home-page .saved-link span { color: #243b2c; }
 .home-page .saved-link:hover { background: #f2c77e; }
-.theme-toggle { width: 70px; height: 36px; padding: 3px 6px; display: flex; align-items: center; justify-content: space-between; border: 0; border-radius: 20px; color: #f7e9ca; background: #8f692b; }
-.theme-toggle i { width: 25px; height: 25px; border-radius: 50%; background: #fffdf7; box-shadow: 0 1px 4px rgba(25,31,23,.2); transition: transform .22s; }
-.theme-toggle .theme-moon { display: none; }
-:root[data-theme="dark"] .theme-toggle i { transform: translateX(-31px); }
-:root[data-theme="dark"] .theme-toggle .theme-moon { display: inline; }
-:root[data-theme="dark"] .theme-toggle > span:first-child { display: none; }
+.theme-toggle { position: relative; width: 70px; height: 36px; padding: 0; display: block; overflow: hidden; border: 1px solid rgba(76,59,31,.22); border-radius: 20px; color: #fff4da; background: #687c68; cursor: pointer; transition: background .24s,border-color .24s; }
+.theme-toggle:hover { background: #536953; }
+.theme-toggle:focus-visible { outline: 3px solid #e4aa49; outline-offset: 3px; }
+.toggle-track-icon { position: absolute; top: 50%; z-index: 0; color: rgba(255,247,224,.78); font-size: 15px; line-height: 1; transform: translateY(-50%); }
+.toggle-sun { left: 10px; }
+.toggle-moon { right: 10px; }
+.toggle-thumb { position: absolute; top: 4px; left: 4px; z-index: 1; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; color: #455543; background: #fffdf6; box-shadow: 0 2px 7px rgba(25,31,23,.25); font-size: 15px; transition: transform .24s cubic-bezier(.2,.8,.2,1),color .2s,background .2s; }
+.theme-toggle.is-dark { background: #344236; }
+.theme-toggle.is-dark .toggle-thumb { transform: translateX(34px); color: #49351e; background: #f1c16c; }
 :root[data-theme="dark"] .home-page .site-header { background: linear-gradient(180deg,rgba(22,31,25,.78),rgba(22,31,25,.2)); }
 :root[data-theme="dark"] .home-page .brand-name,
 :root[data-theme="dark"] .home-page .brand-name span,
@@ -325,9 +328,9 @@ img { display: block; max-width: 100%; }
   .home-page .brand-name { font-size: 14px; letter-spacing: 2px; }
   .home-page .brand-name span { font-size: 7px; letter-spacing: 1.2px; }
   .home-page .nav-links { display: none; }
-  .theme-toggle { width: 54px; height: 30px; }
-  .theme-toggle i { width: 22px; height: 22px; }
-  :root[data-theme="dark"] .theme-toggle i { transform: translateX(-21px); }
+  .theme-toggle { width: 58px; height: 32px; }
+  .toggle-thumb { top: 4px; left: 4px; width: 22px; height: 22px; font-size: 13px; }
+  .theme-toggle.is-dark .toggle-thumb { transform: translateX(26px); }
   .home-page .saved-link { padding: 9px 11px; font-size: 0; }
   .home-page .saved-link span { margin: 0; font-size: 19px; }
   .landing-hero { min-height: 700px; padding: 135px 22px 105px; }
@@ -361,3 +364,69 @@ img { display: block; max-width: 100%; }
   .more-destinations-heading h2 { font-size: 38px; }
   .home-page .about-section { padding: 48px 22px; }
 }
+
+/* Dark theme contrast corrections. */
+:root[data-theme="dark"] [class~="text-[#c17b45]"],
+:root[data-theme="dark"] [class~="text-[#e5c69b]"],
+:root[data-theme="dark"] [class~="text-[#63836e]"],
+:root[data-theme="dark"] [class~="text-[#426c4d]"],
+:root[data-theme="dark"] [class~="text-[#b76c4a]"],
+:root[data-theme="dark"] [class~="text-[#715226]"] { color: #efbd6a !important; }
+:root[data-theme="dark"] [class~="text-[#68756d]"],
+:root[data-theme="dark"] [class~="text-[#526057]"],
+:root[data-theme="dark"] [class~="text-[#777f77]"],
+:root[data-theme="dark"] [class~="text-[#7a827a]"],
+:root[data-theme="dark"] [class~="text-[#858c85]"],
+:root[data-theme="dark"] [class~="text-[#839331]"] { color: #cbd8bd !important; }
+:root[data-theme="dark"] [class~="bg-[#e2ddc6]"] { background-color: var(--paper) !important; }
+:root[data-theme="dark"] [class~="bg-[#29322f]"] { background-color: var(--sage) !important; }
+:root[data-theme="dark"] [class~="hover:bg-[#b0e10e]"]:hover { background-color: #50684c !important; }
+:root[data-theme="dark"] [class~="bg-[#e3eee5]"],
+:root[data-theme="dark"] [class~="bg-[#e9eee8]"] { background-color: #3b493d !important; }
+:root[data-theme="dark"] [class~="bg-[#f5e9e3]"] { background-color: #493c35 !important; }
+:root[data-theme="dark"] [class~="hover:bg-[#f0d7b2]"]:hover { background-color: #f0c36b !important; }
+:root[data-theme="dark"] .site-header { border-color: #485446; background: rgba(31,41,33,.96); }
+:root[data-theme="dark"] .brand-name,
+:root[data-theme="dark"] .brand-name span,
+:root[data-theme="dark"] .nav-links { color: #eee8d8; }
+:root[data-theme="dark"] .nav-links a { color: #e5e7da; }
+:root[data-theme="dark"] .brand-mark { border-color: #e4aa49; color: #2c392e; background: #e4aa49; }
+:root[data-theme="dark"] .saved-link { border-color: #c68a37; color: #342b1d; background: #edc16b; }
+:root[data-theme="dark"] .saved-link:hover { background: #f3cf83; }
+:root[data-theme="dark"] .saved-link span { color: #49351e; }
+:root[data-theme="dark"] .nav-links a:hover { color: #efbd6a; }
+:root[data-theme="dark"] .home-page .nav-links .nav-home { color: #263529; background: #edc16b; }
+:root[data-theme="dark"] ::selection { color: #202a23; background: #edb651; }
+:root[data-theme="dark"] [class~="border-[#e8e6df]"],
+:root[data-theme="dark"] [class~="border-[#eae8e0]"],
+:root[data-theme="dark"] [class~="border-[#eeede7]"] { border-color: var(--line) !important; }
+:root[data-theme="dark"] .home-page .site-header { background: linear-gradient(180deg,rgba(24,34,27,.94),rgba(24,34,27,.64)); }
+:root[data-theme="dark"] .home-page .brand-mark { color: #233126; background: #efc46e; }
+:root[data-theme="dark"] .home-page .nav-home { color: #263529; background: #edc16b; }
+:root[data-theme="dark"] .home-page .nav-links a:not(.nav-home) { color: #f1ead9; }
+:root[data-theme="dark"] .home-page .nav-links a:hover { color: #efbd6a; }
+:root[data-theme="dark"] .home-page .collection-section { color: var(--ink); }
+:root[data-theme="dark"] .home-page .featured-eyebrow { color: #d8dfd1; }
+:root[data-theme="dark"] .home-page .featured-intro h2,
+:root[data-theme="dark"] .home-page .more-destinations-heading h2 { color: #f1ead9; }
+:root[data-theme="dark"] .home-page .featured-intro > p:not(.featured-eyebrow),
+:root[data-theme="dark"] .home-page .more-destinations-heading > span { color: #c4cbbd; }
+:root[data-theme="dark"] .home-page .view-all-link { color: #f1ead9; border-color: #93a18d; }
+:root[data-theme="dark"] .home-page .view-all-link:hover { background: #344236; }
+:root[data-theme="dark"] .home-page .trip-card { border: 1px solid #4a574a; background: var(--surface); }
+:root[data-theme="dark"] .home-page .trip-footer { color: #f1ead9; }
+:root[data-theme="dark"] .home-page .trip-duration,
+:root[data-theme="dark"] .home-page .trip-price { color: #e8eadf; }
+:root[data-theme="dark"] .home-page .trip-price { border-color: #65715e; }
+:root[data-theme="dark"] .hero-search-bar { border-color: rgba(227,174,87,.48); background: rgba(42,52,43,.97); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
+:root[data-theme="dark"] .hero-search-input,
+:root[data-theme="dark"] .hero-search-select { border-color: #5a6655; color: #eee8d8; }
+:root[data-theme="dark"] .hero-search-input input,
+:root[data-theme="dark"] .hero-search-select select { color: #f1ead9; }
+:root[data-theme="dark"] .hero-search-input input::placeholder { color: #c4cbbd; }
+:root[data-theme="dark"] .search-icon,
+:root[data-theme="dark"] .select-icon { color: #efbd6a; }
+:root[data-theme="dark"] .hero-search-select option { color: #eee8d8; background: #303a32; }
+:root[data-theme="dark"] .home-page .trip-category { color: #2a342b; }
+:root[data-theme="dark"] .home-page .about-section { background: #202a23; }
+:root[data-theme="dark"] .reference-collection .empty-state { border-color: var(--line); background: var(--surface); }

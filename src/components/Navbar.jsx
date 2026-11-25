@@ -26,13 +26,16 @@ function Navbar() {
 
         <div className="nav-actions">
           <button
-            className="theme-toggle"
+            className={`theme-toggle${isDark ? ' is-dark' : ''}`}
             type="button"
+            role="switch"
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            aria-pressed={isDark}
+            aria-checked={isDark}
             onClick={() => setIsDark((value) => !value)}
           >
-            <span aria-hidden="true">☼</span><i /><span className="theme-moon" aria-hidden="true">☾</span>
+            <span className="toggle-track-icon toggle-sun" aria-hidden="true">☼</span>
+            <span className="toggle-track-icon toggle-moon" aria-hidden="true">☾</span>
+            <span className="toggle-thumb" aria-hidden="true">{isDark ? '☾' : '☼'}</span>
           </button>
           <Link to="/saved" className="saved-link"><span aria-hidden="true">♡</span> Saved Trips</Link>
         </div>
